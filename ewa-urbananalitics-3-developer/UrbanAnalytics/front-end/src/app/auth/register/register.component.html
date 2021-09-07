@@ -1,0 +1,23 @@
+<section class="container">
+
+  <div class="registerBox contentContainer">
+    <h1>Register</h1>
+    <form #form="ngForm" autocomplete="off" name="form">
+
+      <div class="formInputs" (ngSubmit)="register()">
+        <input type="text" name="firstName" value="" placeholder="Firstname" [(ngModel)]="firstName">
+        <input type="text" name="lastName" value="" placeholder="Lastname" [(ngModel)]="lastName">
+        <input type="email" name="email" value="" placeholder="Email" [(ngModel)]="email">
+        <input type="password" name="password" value="" placeholder="Password" [(ngModel)]="password">
+        <input type="password" name="rePassword" value="" placeholder="Password confirmation" [(ngModel)]="rePassword">
+      </div>
+      <label for="errorMessage" class="errorMessage" #errorMessage></label>
+      <div class="buttonRow">
+        <button class="button" (click)="register($event)">Sign up</button>
+      </div>
+
+      <p class="noAccount">Already have an account? <a routerLink="/auth/login">Login here!</a></p>
+    </form>
+  </div>
+
+</section>

@@ -1,0 +1,51 @@
+<div class="cont">
+
+  <div class="recentPublic contentContainer">
+    <h1>Recent public uploads</h1>
+    <hr>
+
+    <!-- Insert recentPublic component here -->
+    <div *ngFor="let dataset of this.allDatasets">
+
+      <ng-container *ngIf="dataset.public">
+        <tr>
+          <td class="groupName" routerLink="/datasets/single/{{dataset.datasetId}}">
+            <p>{{dataset.name}} uploaded in : " {{dataset.region}} "</p>
+            <p><small>{{dataset.uploadedOn | date:'medium' }}</small></p>
+          </td>
+        </tr>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="alerts contentContainer">
+    <h1>Recent notifications</h1>
+    <hr>
+    <div *ngFor=" let notification of this.recievedNotifications let i=index">
+      <ng-container *ngIf="true">
+        <tr>
+          <td class="groupName">
+            <p>{{notification.message}}</p>
+            {{notification.from}}
+          </td>
+        </tr>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="recentPrivate contentContainer">
+    <h1>Recent private uploads</h1>
+    <hr>
+    <!-- Insert recentPrivate component here -->
+    <div *ngFor="let dataset of this.allDatasets">
+      <ng-container *ngIf="!dataset.public">
+        <tr routerLink="/datasets/single/{{dataset.datasetId}}">
+          <td *ngIf="!dataset.ispublic" class="groupName">
+            <p>{{dataset.name}} uploaded in : " {{dataset.region}} "</p>
+            <p><small>{{dataset.uploadedOn | date:'medium' }}</small></p>
+          </td>
+        </tr>
+      </ng-container>
+    </div>
+  </div>
+</div>

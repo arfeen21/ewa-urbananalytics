@@ -1,0 +1,88 @@
+<div class="cont">
+
+  <div class="groupName contentContainer">
+    <img [src]="this.getImg(this.selectedGroup?.groupImg)">
+    <!-- Back button -->
+    <h1>Group: {{this.selectedGroup?.name}}</h1>
+    <!-- Edit button for admin? -->
+  </div>
+
+  <div class="datasetDetails contentContainer">
+    <h1>Dataset details</h1>
+    <hr>
+    <!-- Dataset details here -->
+    <div class="datasetDetailsContent">
+      <table class="dataSetDetailsContentTable">
+        <tr>
+          <td>Name:</td>
+          <td>{{this.selectedGroup?.name}}</td>
+        </tr>
+        <tr>
+          <td>Uploaded by: </td>
+          <td>{{this.selectedGroup?.createdBy.firstName }}</td>
+        </tr>
+        <tr>
+          <td>Uploaded on: </td>
+          <td>{{this.getDate(this.selectedGroup?.createdOn)}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="datasetList contentContainer">
+    <h1>Dataset list</h1>
+    <hr>
+
+    <div class="datasetListContent">
+      <!-- Dataset list here -->
+      <table class="dataSetTable">
+        <div *ngFor="let dataset of this.datasets">
+          <div class="dataset" routerLink="/datasets/single/{{dataset.dataset.datasetId}}">{{dataset.dataset.name}}
+            <div (click)="openModalDataset(dataset.dataset.datasetId)">
+              <i class="fa fa-trash"></i>
+            </div>
+          </div>
+
+        </div>
+      </table>
+    </div>
+  </div>
+
+  <div class="groupMembers contentContainer">
+    <div class="gmHeader">
+      <h1>Group members</h1>
+      <app-add-members *ngIf="this.addMembersPopup" (exit)="this.toggleaddMembersPopup()"></app-add-members>
+
+      <button (click)="toggleaddMembersPopup()" class="button"><i class="fa fa-plus"></i></button>
+    </div>
+
+
+    <hr>
+    <div class="groupMemberContent">
+      <!-- Group members list here (Add, Delete Update ?) -->
+      <tr *ngFor="let user of this.selectedGroup?.groupMembers let i = index">
+        <img [src]="user.foto != null ? user.foto : myImgUrl">
+        <td class="username">
+          <p>{{user.firstName + " (" + user.email + ")" }}</p>
+          <div (click)="openModal(user)">
+            <i class="fa fa-trash"></i>
+          </div>
+        </td>
+      </tr>
+    </div>
+  </div>
+
+
+  <div *ngIf="!isHidden" class="cont" (click)="this.exitPopup()">
+    <div class="contentContainer deleteModal">
+      <div>
+        <h3>would you like to delete {{this.selectedUser?.firstname || "dataset"}}?</h3>
+        <hr>
+        <div class="buttons">
+          <button (click)="this.confirmDelete()" class="button">Yes</button>
+          <button (click)="this.exitPopup()" class="button cancelButton">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

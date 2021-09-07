@@ -1,0 +1,43 @@
+<div class="cont">
+
+  <div class="groupList contentContainer">
+    <h1>Group list</h1>
+    <hr>
+
+    <div class="groupListStyle">
+      <table>
+        <tr *ngFor="let group of this.allGroups let i = index"
+          (click)="this.selectedGroup = group; this.selectedDatasetID = i;"
+          [ngClass]="{'selected': this.selectedGroup === group}">
+          <td class="groupImg"><img [src]="group.groupImgUrl"></td>
+          <td class="groupName">{{group.name}}
+            <button class="button" id="{{group.groupId}}" (click)="deleteGroup($event)">delete group</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="groupDetails contentContainer">
+    <h1>Group details</h1>
+    <hr>
+    <div class="groupDetailsContent">
+      <!-- Insert group details here -->
+      <img src="" alt="">
+      <h3>All Users</h3>
+      <table>
+        <tr *ngFor="let users of this.selectedGroup?.groupMembers; let i = index">
+          <img [src]="users.foto != null ? users.foto :myImgUrl">
+          <td class="userName">{{users.firstname + "(" + users.email + ")"}}
+            <button class="button" id="{{users.userId}}" (click)="confirmDelete()">delete user</button>
+          </td>
+        </tr>
+
+      </table>
+      <!-- 
+      Give routerLink a route param to give selected value
+      <button routerLink="/groups/single/" class="button" (click)="sendSelectedGroupID(this.selectedDatasetID)">Go to
+        group</button> -->
+    </div>
+  </div>
+</div>

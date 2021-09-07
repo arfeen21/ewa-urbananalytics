@@ -1,0 +1,196 @@
+@import "../../styles.scss";
+
+.cont {
+  // Grid settings
+  display: grid;
+  grid-template-columns: 50fr 50fr;
+  grid-template-rows: 70fr 30fr;
+  grid-template-areas: "groupList groupDetails""groupList createGroup";
+  row-gap: 2rem;
+  column-gap: 3rem;
+
+  height: 100%;
+
+  // Group details component
+  .groupDetails {
+    grid-area: groupDetails;
+    margin: 5% 7% 0 0;
+
+    .groupDetailsContent {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      height: 100%;
+
+      button {
+        align-self: center;
+        position: relative; 
+        width: unset;
+        padding: 5px 10px;
+        
+      
+      }
+
+      button:hover {
+        transition: 0.7s;
+        background-color: $color-secondary;
+      }
+
+      table {
+        margin: 2rem 0;
+      }
+      tr {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 0 0 0.8rem 0;
+        padding: 0.5rem;
+        box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+
+        &:hover {
+          transition: 0.2s;
+          color: $color-primary;
+          background-color: #353a47;
+        }
+
+        &.selected {
+          color: $color-secondary;
+          background-color: #353a47;
+        }
+      }
+      img {
+        height: 50px;
+        border-radius: 100%;
+        margin-right: 20px;
+      }
+
+    }
+  }
+
+  // Create group component
+  .createGroup {
+    grid-area: createGroup;
+    margin: 0 7% 5% 0;
+
+    .createGroupContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      button {
+        width: 60%;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        transition: 0.7s;
+        background-color: $color-secondary;
+      }
+    }
+  }
+
+  // Group list component
+  .groupList {
+    position: relative;
+    grid-area: groupList;
+    margin: 5% 0 5% 7%;
+    font-size: 1.2rem;
+
+    .groupListStyle {
+      overflow-y: scroll;
+      height: 95%;
+      box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.1);
+
+      table {
+        height: 100%;
+        width: 100%;
+        background-color: linear-gradient(to bottom, #7245b8 0%, $color-secondary 100%);
+        padding: 1rem;
+
+        tr {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          margin: 0 0 .8rem 0;
+          padding: .5rem;
+          box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15);
+
+          cursor: pointer;
+
+          &:hover {
+            transition: 0.2s;
+            color: $color-primary;
+            background-color: #353a47;
+          }
+
+          &.selected {
+            color: $color-secondary;
+            background-color: #353a47;
+          }
+
+          .groupImg {
+            width: 15%;
+            display: flex;
+            justify-content: center;
+
+            img {
+              border-radius: 30rem;
+              height: 4rem;
+              width: 4rem;
+            }
+          }
+
+          .groupName {
+            width: 85%;
+          }
+        }
+      }
+    }
+  }
+
+  //Change grid if device is a phone
+  @include for-phone-only {
+    grid-template-columns: 100fr;
+    grid-template-rows: 75fr 75fr 50fr;
+    grid-template-areas: "groupList""groupDetails""createGroup";
+    height: 140%;
+    row-gap: 1.5rem;
+
+    .createGroup {
+      margin: 0 5% 5% 5%;
+    }
+
+    .groupDetails {
+      margin: 0 5% 0 5%;
+    }
+
+    .groupList {
+      margin: 5% 5% 0 5%;
+
+      .groupListStyle {
+        table {
+          padding: .5rem .2rem .2rem .2rem;
+
+          tr {
+            .groupImg {
+              width: 30%;
+
+              img {
+                width: 60%;
+                height: 60%;
+              }
+            }
+
+            .groupName {
+              width: 70%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

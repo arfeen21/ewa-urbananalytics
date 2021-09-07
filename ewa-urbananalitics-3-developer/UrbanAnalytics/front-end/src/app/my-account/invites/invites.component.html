@@ -1,0 +1,48 @@
+<div class="contentContainer">
+  <h2>Invites</h2>
+  <hr>
+
+
+  <div class="list">
+    <ul>
+      <!-- INVITE START -->
+
+      <li *ngFor=" let notification of this.recievedNotifications let i=index">
+        <div class="invite">
+          <div class="img-text">
+            <i class="fa fa-user-plus"></i>
+            <div>
+              <p>{{notification.message}}</p>
+              <p class="date"></p>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- EXAMPLE INVITE -->
+      <!-- <li>
+        <div class="invite">
+          <div class="img-text">
+            <img
+              src="https://scontent-ams4-1.xx.fbcdn.net/v/t1.0-9/13528692_1186996387985925_6827968356205182336_n.jpg?_nc_cat=110&_nc_oc=AQkLvZs5Kj54MS6yQnSidbWLJLpt9vciQpWEDji0qsbrTenI32WtzPZaUPmhxGS4fHE&_nc_ht=scontent-ams4-1.xx&oh=789781253252145e47f59cfe0900450f&oe=5E31C9D8"
+              alt="">
+            <div>
+              <p>You are invited to the <b>Gemeente Zaanstad </b> group, Let them know if you would like to join or
+                not.</p>
+              <p class="date">8 October 2019</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <a href="">
+              <p class="accept">Accept</p>
+            </a>
+            <a href="">
+              <p class="decline">Decline</p>
+            </a>
+          </div>
+        </div>
+      </li> -->
+
+    </ul>
+  </div>
+</div>

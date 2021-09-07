@@ -1,0 +1,148 @@
+@import "../../styles.scss";
+
+app-nav {
+  z-index: 1;
+}
+
+nav {
+  width: 230px;
+  height: 100%;
+  background: linear-gradient(to bottom, #7245b8 0%, $color-secondary 100%);
+
+  transform: translateX(-170px);
+  transition: all .4s ease-in-out;
+  user-select: none;
+
+  @include for-phone-only {
+    width: 100%;
+    height: calc(100% - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    transform: translateX(-100%);
+  }
+
+  &.active {
+    transform: translateX(0px);
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+
+    @include for-phone-only {
+      transform: translateX(0);
+    }
+
+    .link-text {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li a {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration: none;
+    transition: all .2s;
+    padding: 0px 0;
+
+    @include for-phone-only {
+      display: flex;
+      justify-content: center;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+
+      .link-text {
+        margin-right: 10px;
+        // color: rgb(210, 210, 210)
+      }
+
+      .icon i {
+        &.small {
+          transform: scale(0.8);
+        }
+
+        &.medium {
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    &.active {
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: .6;
+
+      .link-text {
+        margin-right: 10px;
+        // color: rgb(210, 210, 210)
+      }
+
+      .icon i {
+        &.small {
+          transform: scale(0.7);
+        }
+
+        &.medium {
+          transform: scale(0.8);
+        }
+      }
+    }
+  }
+
+  .link-text {
+    color: white;
+    font-size: 24px;
+    margin-right: 20px;
+    text-decoration: none;
+    transition:
+      margin-right .2s ease-in,
+      transform .9s,
+      opacity .4s,
+      visibility .4s;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+
+    @include for-phone-only {
+      padding: 20px 0;
+      margin: 0;
+    }
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include for-phone-only {
+      display: none;
+    }
+
+    i {
+      color: white;
+      transition: all .2s;
+    }
+
+    i.small {
+      transform: scale(0.7);
+    }
+
+    i.medium {
+      transform: scale(0.8);
+    }
+  }
+}

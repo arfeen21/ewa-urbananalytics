@@ -1,0 +1,124 @@
+@import "../../../../styles.scss";
+
+.cont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(#000000, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  .popupContainer {
+    position: relative;
+    background: linear-gradient(to bottom, #242b3f 0%, #1f1f20 100%);
+    width: 45%;
+    height: 80%;
+    border-radius: .5rem;
+    padding: 2rem 2rem 4rem 2rem;
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.12);
+
+    overflow-y: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    // Change css if device is a phone
+    @include for-phone-only {
+      width: 90%;
+    }
+
+    h1 {
+      text-align: center;
+      padding: .5rem;
+      font-size: 1.5rem;
+    }
+
+    .popupContent {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 70%;
+
+      table {
+        width: 100%;
+
+
+        tr {
+          margin: .5rem 0;
+
+          td {
+            text-align: center;
+            font-size: 1.1rem;
+            padding: .5rem;
+
+            input {
+              width: 100%;
+              padding: .5rem;
+              background: rgba(0, 0, 0, 0);
+              border: solid 1px white;
+              border-radius: .3rem;
+              color: white;
+              text-align: center;
+              font-size: 1.2rem;
+
+              &:focus {
+                outline: none;
+              }
+            }
+
+
+            .error {
+              width: 100%;
+              margin-top: -1px;
+              padding: 0.5rem;
+              height: 40px;
+              border: solid 2px #ff00009c;
+              border-radius: 0 0 5px 5px;
+              border-top: none;
+
+              .error-msg {
+                color: rgb(255, 145, 138);
+              }
+            }
+          }
+        }
+      }
+
+      .userSelector {
+        width: 96%;
+      }
+    }
+
+    .success-msg {
+      color: #48ff04;
+      text-align: center;
+    }
+
+    .buttonRow {
+      display: flex;
+      justify-content: space-around;
+      justify-self: flex-end;
+
+      button {
+        width: 30%;
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: auto;
+
+          &:hover {
+            background-color: #7245b8;
+          }
+        }
+      }
+    }
+  }
+}
+

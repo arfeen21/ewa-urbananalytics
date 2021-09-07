@@ -1,0 +1,13 @@
+<nav [ngClass]="{'active': navExtended}">
+  <ul>
+    <li *ngFor="let navBarRoute of navBarRoutes">
+      <a *ngIf="!navBarRoute.isAdmin || navBarRoute.isAdmin && this.isCurrentUserAdmin"
+        [routerLink]="[navBarRoute.link]" [ngClass]="{'active': navBarRoute.link == currentParentUrl}">
+        <span class="link-text">{{navBarRoute.text}}</span>
+        <div class="icon">
+          <i [ngClass]="[navBarRoute.iconClasses]"></i>
+        </div>
+      </a>
+    </li>
+  </ul>
+</nav>

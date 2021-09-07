@@ -1,0 +1,29 @@
+<section class="container">
+
+  <div class="login contentContainer">
+    <h1>Login</h1>
+    <form [formGroup]="formData" (ngSubmit)="logIn()" autocomplete="off">
+
+      <div class="formInputs">
+        <input formControlName="username" autocomplete="false" type="text" name="email" required placeholder="Email"
+          required pattern="alex.ernst@sweden.se" />
+        <input formControlName="pwd" type="password" name="password" required placeholder="Password"
+          pattern="tester123" />
+      </div>
+
+      <label for="errorMessage" class="errorMessage" #errorMessage>error</label>
+      <div class="buttonRow">
+        <button class="inloggen button" (click)="logIn($event)"><span>Login</span></button>
+      </div>
+
+      <p class="noAccount">Don't have a account? <a routerLink="/auth/register">Register here!</a></p>
+
+      <div class="remember_me">
+        <input type="checkbox" name="checkbox" id="remember_me" #remember>
+        <label (click)="remember.click()">Remember me</label>
+      </div>
+
+    </form>
+  </div>
+
+</section>

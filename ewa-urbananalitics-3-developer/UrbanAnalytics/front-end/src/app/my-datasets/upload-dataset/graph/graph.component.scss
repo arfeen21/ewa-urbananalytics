@@ -1,0 +1,217 @@
+.container {
+  margin: 0 3.5% 2% 3.5%;
+  min-width: 48%;
+  max-width: 100%;
+  max-height: 100%;
+
+  hr {
+    border: #7245b8 1px solid;
+    margin: 0 7rem 0 7rem;
+  }
+
+  .header {
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    height: 4rem;
+    border-radius: .5rem .5rem 0 0;
+    background: #202430;
+    font-size: .7rem;
+    padding: 1rem 3rem 1rem 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    .topright-icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100px;
+
+      i {
+        transition: all 500ms ease;
+        transform: translateY(-15%);
+
+        &.down {
+          margin-top: 15px;
+        }
+
+        &:hover {
+          // transform: scale(1.1);
+          color: burlywood;
+          transition: all .2s;
+        }
+      }
+    }
+
+    &.hidden {
+      border-radius: .5rem;
+
+      i {
+        transform: translatey(15%) rotate(180deg);
+      }
+    }
+  }
+
+  .body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 1rem 0 0 0;
+
+    &.hidden {
+      overflow: hidden;
+      display: none;
+    }
+
+    .datasetInfoContainer,
+    .chartInfo {
+      padding: 0 7rem 0 7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 2rem;
+      margin: 1.5rem 0 1.5rem 0;
+
+      input,
+      select {
+        height: 2rem;
+        width: 25%;
+        color: white;
+        text-align: center;
+        border-radius: .5rem;
+
+        background: #27292c;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+
+        border: none;
+        outline: none;
+
+        &:focus {
+          outline: none;
+        }
+
+        option {
+          background-color: #2f3445;
+        }
+      }
+    }
+
+    .datasetInfoDescription {
+      margin-bottom: 1rem;
+      padding: 0 7rem 0 7rem;
+
+      textarea {
+        margin-top: 1rem;
+        width: 100%;
+        height: 7rem;
+        resize: none;
+        border-radius: .5rem;
+        background: #27292c;
+        box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+        padding: .5rem;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 1.2rem;
+        overflow-y: scroll;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .dataContainer {
+      position: relative;
+      height: 40vh;
+
+      .dataContainerHeader {
+        padding: 2rem 4rem 1rem 4rem;
+        width: 26%;
+        height: 10%;
+
+        display: flex;
+        align-items: center;
+        flex-flow: row;
+
+        .showChart,
+        .showTable {
+          cursor: pointer;
+          border-radius: 1rem 1rem 0 0;
+          padding: 1rem 2rem .5rem 2rem;
+          margin: 0 .5rem 1rem 0;
+          background-color: rgba(0, 0, 0, 0.1);
+          border: #7245b8 1px solid;
+          border-bottom: none;
+
+          label {
+            cursor: inherit;
+          }
+        }
+      }
+
+      .dataContainerContent {
+        padding: 2rem 4rem 1rem 4rem;
+        box-shadow: inset 0 7px 15px -7px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.1);
+        height: 87%;
+        width: 89.8vw;
+
+        .graphContainer,
+        .tableContainer {
+          width: 100%;
+          height: 90%;
+
+          &.hidden {
+            display: none;
+          }
+        }
+
+        .tableContainer {
+          position: relative;
+          max-width: 100%;
+          max-height: 100%;
+          overflow-x: scroll;
+          overflow-y: scroll;
+
+          table {
+            max-width: 100%;
+            text-align: center;
+            border-spacing: 0;
+
+            tr {
+              min-height: 2rem;
+
+              &:nth-child(odd) {
+                background-color: rgba(0, 0, 0, 0.1);
+              }
+
+              &:first-child {
+                background-color: transparent;
+              }
+
+              &:nth-child(2) {
+                background-color: #7245b8;
+              }
+
+              td {
+                padding: .5rem 1rem .5rem 1rem;
+                min-width: 2rem;
+
+                &:first-child {
+                  background-color: transparent;
+                }
+
+                &:nth-child(odd) {
+                  background-color: rgba(0, 0, 0, 0.1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

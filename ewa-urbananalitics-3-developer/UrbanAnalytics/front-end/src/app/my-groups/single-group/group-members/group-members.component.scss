@@ -1,0 +1,27 @@
+.memberlist-item {
+  .profiles {
+    display: flex;
+    align-items: center;
+
+    img {
+      min-width: 45px;
+      width: 10%;
+      height: auto;
+      padding-right: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}
+.memberlist-item, img{
+  padding-right: 10px;
+  padding-top: 4px;
+  transition-property: all;
+  transition-duration: 1s;
+  font-size: 1.2rem;
+}
+
+.memberlist-item:hover{
+  margin-left: 15px;
+  cursor: pointer;
+  color: #ad54ff;
+}

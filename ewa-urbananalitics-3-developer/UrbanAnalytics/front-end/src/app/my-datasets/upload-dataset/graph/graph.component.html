@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="header" (click)="this.hide(body, $event.target)">
+    <i></i>
+    <h1>{{name}} - {{typeValue.toUpperCase()}}</h1>
+    <div class="topright-icons">
+      <i class="fa fa-4x fa-sort-down"></i>
+      <i (click)="deleteGraph()" class="down fa fa-3x fa-times-circle"></i>
+    </div>
+  </div>
+
+  <div class="body contentContainer" #body>
+    <div class="datasetInfo">
+      <div class="datasetInfoContainer">
+        <label>Name: </label>
+        <input type="text" class="text" [(ngModel)]="name" (change)="nameChange($event)">
+
+        <label>Type: </label>
+        <select id="type" (change)="typeChange($event)" [(ngModel)]="typeValue">
+          <option value="bar">Bar</option>
+          <option value="line">Line</option>
+          <option value="pie">Pie</option>
+        </select>
+      </div>
+
+      <div class="datasetInfoDescription">
+        <label>Description: </label>
+        <textarea name="description" [(ngModel)]="description" (change)="descriptionChange($event)"></textarea>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="chartInfo">
+      <label>X: </label>
+      <select [(ngModel)]="xValue" (change)="xChange($event)">
+        <option *ngFor="let cell of this.header; let i = index" value="{{i}}">{{cell}}</option>
+      </select>
+
+      <label>Y: </label>
+      <select [(ngModel)]="yValue" (change)="yChange($event)">
+        <option *ngFor="let cell of this.header; let i = index" value="{{i}}">{{cell}}</option>
+      </select>
+
+      <label>Group by: </label>
+      <select [(ngModel)]="sortByValue" (change)="sortByChange($event)">
+        <option *ngFor="let cell of this.header; let i = index" value="{{i}}">{{cell}}</option>
+      </select>
+    </div>
+
+    <div class="dataContainer">
+      <div class="dataContainerHeader">
+        <div (click)="this.showGraph(graphContainer, tableContainer)" class="showChart">
+          <label>Graph</label>
+        </div>
+        <div (click)="this.showTable(graphContainer, tableContainer)" class="showTable">
+          <label>Data</label>
+        </div>
+      </div>
+
+      <div class="dataContainerContent">
+        <div id="tableContainer" class="tableContainer hidden" #tableContainer>
+          <table>
+            <tr>
+              <td>Using: </td>
+              <td *ngFor="let row of this.data">
+                <input type="checkbox" checked>
+              </td>
+            </tr>
+            <tr *ngFor="let row of this.data; let i = index">
+              <td><input *ngIf="i != 0" type="checkbox" checked></td>
+              <td *ngFor="let val of row">
+                {{val}}
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="graphContainer" class="graphContainer" #graphContainer>
+          <canvas #graph></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

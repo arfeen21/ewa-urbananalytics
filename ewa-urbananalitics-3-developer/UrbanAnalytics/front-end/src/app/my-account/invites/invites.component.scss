@@ -1,0 +1,148 @@
+@import "../../../styles.scss";
+
+.contentContainer {
+  position: relative;
+  height: 80%;
+
+  @include for-phone-only {
+    padding: 0;
+    margin: 0;
+  }
+
+  .list {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 35rem;
+
+    ul {
+      margin-top: 15px;
+
+      li {
+        margin: 20px 0;
+        list-style: none;
+
+
+        .invite {
+          height: fit-content;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column; //Twijfel nog over row of column
+
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            filter: blur(1px);
+            background-color: hsl(222, 16%, 16%);
+
+          }
+
+
+          .img-text {
+            display: flex;
+            flex-direction: row;
+
+
+            img {
+              height: 63px;
+              width: 63px;
+              border-radius: 500px;
+              max-height: 63px;
+
+            }
+
+            i {
+              height: 60px;
+              width: 30px;
+              object-fit: cover;
+              font-size: 30px;
+
+            }
+
+            div {
+              margin-left: 18px;
+              width: 23rem;
+
+              .date {
+                font-size: 12px;
+                color: #bbb;
+              }
+            }
+          }
+
+
+          .buttons {
+            display: flex;
+            justify-content: flex-end;
+
+            margin-top: -9px;
+
+            a {
+              text-decoration: none;
+            }
+
+            p {
+              border-radius: 5px;
+              border: 1px solid;
+              color: white;
+              margin: 9px 11px;
+              padding: 7px 26px;
+              transition: all .2s ease-in-out;
+            }
+
+            .accept {
+
+              background: #7346b7;
+              border: 1px solid #ffffff99 !important;
+
+
+              &:hover {
+                background: #513181;
+              }
+            }
+
+            .decline {
+              color: rgb(148, 148, 148);
+
+              &:hover {
+                background-color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.loader {
+  &:before {
+    content: "";
+    animation: loading 1s linear infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: "|";
+  }
+
+  25% {
+    content: "/";
+  }
+
+  50% {
+    content: "|";
+  }
+
+  75% {
+    content: "\\";
+  }
+
+  100% {
+    content: "|";
+  }
+}

@@ -1,0 +1,158 @@
+@import "../../styles.scss";
+
+.grid-container {
+  padding: 3rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "profile profile messages";
+
+  .profile {
+    grid-area: profile;
+    margin: 0 20px;
+
+    .profile-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "picture inputs inputs";
+
+      .picture {
+        grid-area: picture;
+
+        .picCont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+        }
+
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 100%;
+          margin-bottom: 30px;
+        }
+
+        input {
+          text-align: center;
+          background-color: #00000054;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          font-size: 14px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        input:disabled {
+          text-align: center;
+          background: none;
+          color: white;
+          border: none;
+          font-size: 14px;
+        }
+      }
+
+      .inputs {
+        grid-area: inputs;
+        padding-left: 20px;
+
+        #desc {
+          margin-top: 20px;
+        }
+
+        textarea {
+          font-family: "Nunito Sans", sans-serif;
+          font-size: 14px;
+          margin-top: 0;
+          color: #bbb;
+          background-color: #00000054;
+          width: 24rem;
+          resize: none;
+          border: none;
+          border-radius: 6px;
+          width: 100%;
+        }
+
+        textarea:disabled {
+          background: none;
+          border: none;
+        }
+
+        input:disabled {
+          background: none;
+          color: white;
+          border: none;
+        }
+
+        input {
+          background-color: #00000054;
+          font-size: 30px;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .save-button {
+          width: 100px;
+          height: 30px;
+          background-color: white;
+          color: white;
+          font-size: 16px;
+          background-color: lightslategrey;
+          border: none;
+          align-self: end;
+          float: right;
+        }
+
+        #location {
+          margin-top: 9px;
+          color: gray;
+
+          input {
+            margin-top: -2px;
+            margin-left: 18px;
+            font-size: 17px;
+            width: 250px;
+            color: gray;
+          }
+        }
+
+        #company,
+        #job-desc {
+          margin: 0;
+
+          input {
+            font-size: 22px;
+            color: grey;
+          }
+        }
+      }
+    }
+  }
+
+  .messages {
+    grid-area: messages;
+    height: fit-content;
+    margin: 0 20px;
+  }
+}
+
+// Mobile changes
+@media (max-width: 1321px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "profile "" profile""messages";
+
+    .profile-grid-container {
+      display: grid;
+      grid-template-columns: 1fr !important;
+      grid-template-rows: 1fr 1fr !important;
+      grid-template-areas: "picture "" inputs " !important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="header contentContainer">
+    <p (click)="backClicked()"><i class="fa fa-chevron-left"></i> Back</p>
+    <h1>Dataset name: {{this.dataset?.name}}</h1>
+    <span></span>
+  </div>
+
+  <div class="datasetInfo contentContainer">
+    <h1>Dataset information:</h1>
+    <hr>
+    <div class="datasetInfoSummery">
+      <p>Description: {{this.dataset?.summary}}</p>
+    </div>
+  </div>
+
+  <div class="chartContainer">
+    <div *ngFor="let chart of this.dataset?.charts" class="charts contentContainer">
+      <h1>Chart name: {{chart.name}}</h1>
+      <hr>
+      <p>Description: {{chart.description}}</p>
+      <app-chart [chartData]="chart"></app-chart>
+    </div>
+  </div>
+</div>

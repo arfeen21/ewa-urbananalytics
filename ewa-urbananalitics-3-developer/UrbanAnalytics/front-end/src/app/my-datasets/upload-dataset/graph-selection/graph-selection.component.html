@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="header contentContainer">
+    <h1>Create dataset</h1>
+  </div>
+
+  <div class="datasetInfo contentContainer">
+    <h1>Dataset information:</h1>
+    <hr>
+
+    <div class="datasetInfoContainer">
+      <div>
+        <div class="datasetInfoName">
+          <label>Dataset name:</label>
+          <input type="text" class="datasetName" (change)="datasetNameChange($event)">
+        </div>
+
+        <div class="datasetInfoSummery">
+          <label>Dataset summary:</label>
+          <textarea (change)="datasetDescChange($event)"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <div class="datasetInfoPublic">
+          <label>Dataset access:</label>
+          <select name="isPublic" id="isPublic" (change)="datasetSetAccess($event)">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+          </select>
+        </div>
+
+        <div class="datasetInfoRegion">
+          <label>Dataset region:</label>
+          <select name="region" id="region" (change)="datasetSetRegion($event)">
+            <option value="EU">EU</option>
+            <option value="US">US</option>
+            <option value="National">National</option>
+          </select>
+        </div>
+
+        <div class="datasetInfoGroups">
+          <label>Dataset share with group:</label>
+          <ng-multiselect-dropdown id="groupSelector" class="groupSelector" name="groupSelector"
+            [placeholder]="'Select groups you would like to share this dataset with.'" [(data)]="dropdownList"
+            [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="graphSelectorContainer">
+    <div #graphContainer></div>
+  </div>
+
+  <div class="buttonBar contentContainer">
+    <button class="button" (click)="goBack()">Back</button>
+    <button class="button" (click)="addGraph()">Add new graph</button>
+    <button class="button" (click)="saveDataset()">Save</button>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "datasetHeader""datasetInfo""datasetGraphs";
+  gap: 2rem;
+
+
+  .header {
+    grid-area: datasetHeader;
+    margin: 2% 4% 0 4%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      cursor: pointer;
+      font-size: 20px;
+      margin-top: 5px;
+    }
+  }
+
+  .datasetInfo {
+    grid-area: datasetInfo;
+    margin: 0 4% 0 4%;
+  }
+
+  .chartContainer {
+    grid-area: datasetGraphs;
+    margin: 0 4% 0 4%;
+
+    .charts {
+      margin-bottom: 2%;
+    }
+  }
+}

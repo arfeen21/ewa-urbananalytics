@@ -1,0 +1,55 @@
+<div class="cont">
+  <div class="outer-burger" (click)="toggleNav()" *ngIf="isLoggedIn">
+    <div class="hamburger" [ngClass]="{'active': navExtended}"></div>
+  </div>
+  <div class="content-wrapper" [ngClass]="{'notLoggedIn': !isLoggedIn}">
+    <div class="logo-text-wrapper" routerLink="/">
+      <h1>Empower</h1>
+    </div>
+    <div class="right-wrapper">
+      <div *ngIf="isLoggedIn" class="icon-wrapper">
+        <i class="big-icon fa fa-bell-o"></i>
+        <div class="amount-wrapper">
+          <span class="amount">
+            {{this.amountOfNotifications}}
+          </span>
+        </div>
+
+        <div (mouseleave)="setNotificationsRead()" class="dropout-message">
+          <ul>
+            <li *ngFor="let notification of this.recievedNotifications let i = index">
+              <a href="">
+                <i class="fa fa-bell-o"></i>
+                {{notification.message}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="account-text-wrapper" [ngClass]="{'text-button': !isLoggedIn}">
+        <a *ngIf="!isLoggedIn" routerLink="auth/login">Login</a>
+        <span *ngIf="!isLoggedIn">/</span>
+        <a *ngIf="!isLoggedIn" routerLink="auth/register">Register</a>
+
+
+        <div *ngIf="isLoggedIn" class="icon-wrapper">
+          <i class="fa fa-user-circle big-icon"></i>
+
+          <div class="dropout-message" *ngIf="isLoggedIn">
+            <ul>
+              <li routerLink="/account">
+                <i class="fa fa-1.5x fa-user-circle"></i>
+                My account
+              </li>
+              <li (click)="logout()">
+                <i class="fa fa-1.5x fa-sign-out"></i>
+                Logout
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

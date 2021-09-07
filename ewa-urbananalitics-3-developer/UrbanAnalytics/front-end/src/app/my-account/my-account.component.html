@@ -1,0 +1,74 @@
+<div class="grid-container">
+
+  <div class="profile">
+    <div data-wow-delay="0.5s" class="form-cont contentContainer wow animated infinite bounce delay-2s">
+
+      <div class="edit-toggle">
+        <ng-switchery [(ngModel)]="edit" onLabel="edit" color="orange"></ng-switchery>
+      </div>
+
+      <form *ngIf="user" #saveForm="ngForm" (ngSubmit)="save(saveForm)">
+        <div class="profile-grid-container">
+          <div class="picture" id="pf">
+            <div class="picCont">
+              <img src="{{user?.foto}}" alt="profile pic">
+
+              <div>
+                <span class="fa fa-phone"></span>
+                <input [disabled]="!edit" type="tel" name="phoneNumber" id="" [(ngModel)]="user.tel">
+              </div>
+
+              <div>
+                <span class="fa fa-envelope"></span>
+                <input [disabled]="!edit" type="email" name="email" id="" [(ngModel)]="user.email">
+              </div>
+
+              <div>
+                <span class="fa fa-globe"></span>
+                <input [disabled]="!edit" type="url" name="website" id="" [(ngModel)]="user.website">
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="inputs">
+            <div>
+              <input [disabled]="!edit" name="firstname" type="text" [(ngModel)]="user.firstName">
+
+              <div id="location">
+                <span class="fa fa-map-marker"></span>
+                <input [disabled]="!edit" type="text" name="location" [(ngModel)]="user.location">
+              </div>
+
+            </div>
+
+            <div id="company">
+              <input [disabled]="!edit" type="text" name="job" [(ngModel)]="user.baan">
+            </div>
+
+            <div id="job-desc">
+              <input [disabled]="!edit" type="text" name="jobDesc" [(ngModel)]="user.jobDesc">
+            </div>
+
+            <div id="desc">
+              <div>
+                <label for="">About me</label>
+                <textarea [disabled]="!edit" name="aboutMe" id="" cols="30" rows="10" [(ngModel)]="user.aboutMe">
+                </textarea>
+              </div>
+            </div>
+
+            <button class="save-button" *ngIf="edit" type="submit">Save</button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="messages">
+    <app-invites></app-invites>
+  </div>
+
+</div>

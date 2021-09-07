@@ -1,0 +1,13 @@
+<div class="container" [ngClass]="{'landing': !isLoggedIn}">
+
+  <app-header></app-header>
+  <div *ngIf="isLoggedIn">
+    <app-nav>
+    </app-nav>
+  </div>
+
+  <div [@routeAnimations]="prepareRoute(outlet)" class="content">
+    <!-- All content gets loaded in here -->
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

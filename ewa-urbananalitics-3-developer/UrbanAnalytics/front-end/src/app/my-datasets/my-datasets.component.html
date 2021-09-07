@@ -1,0 +1,95 @@
+<div class="container">
+
+  <div class="datasetFiltersContainer contentContainer">
+    <h1>Dataset filters</h1>
+    <hr>
+    <div class="datasetFilter">
+      <label>Sort by: </label>
+      <select [(ngModel)]="selectedSort" (ngModelChange)="sortByUpdate($event)">
+        <!-- <option value="views">Sort by views</option> -->
+        <option value="region">Region</option>
+        <option value="group">Group</option>
+      </select>
+
+      <label>Search: </label>
+      <input type="text" [(ngModel)]="filter" (ngModelChange)="filterChange($event)">
+    </div>
+  </div>
+
+  <div class="datasetDetailsContainer contentContainer">
+    <h1>Dataset details</h1>
+    <hr>
+
+    <div class="datasetDetails">
+      <table>
+        <tr>
+          <td>Dataset name:</td>
+          <td>{{this.selectedDataset?.name}}</td>
+        </tr>
+        <tr>
+          <td>Dataset summary:</td>
+          <td>{{this.selectedDataset?.summary}}</td>
+        <tr>
+          <td>Uploaded by:</td>
+          <td>{{this.selectedDataset?.uploadedBy}}</td>
+        </tr>
+        <tr>
+          <td>Uploaded on:</td>
+          <td>{{this.selectedDataset?.uploadedOn}}</td>
+        </tr>
+      </table>
+
+      <button routerLink="/datasets/single/{{this.selectedDataset?.datasetId}}" class="button">Go to dataset</button>
+    </div>
+  </div>
+
+  <div class="datasetAddContainer contentContainer">
+    <h1>Create dataset</h1>
+    <hr>
+
+    <div class="datasetAdd">
+      <button class="button" routerLink="/datasets/create/upload">Create new dataset</button>
+    </div>
+
+  </div>
+
+  <div class="datasetListContainer contentContainer">
+    <h1>Dataset list</h1>
+    <hr>
+
+    <div class="datasetList">
+      <!-- Sorted by groups -->
+      <table *ngIf="this.selectedSort === 'group'">
+
+        <div *ngFor="let group of this.usedGroups">
+          <div *ngIf="group.datasets?.length > 0">
+            <h1>{{group.name}}</h1>
+            <hr>
+            <tr *ngFor="let dataset of group.datasets" (click)="this.selectedDataset = dataset.dataset"
+              [ngClass]="{'selected': this.selectedDataset === dataset}">
+              <!-- <td class="groupImg"><img src="../../assets/img/no_profile.png" /></td> -->
+              <td class="groupName">{{dataset.dataset.name}}</td>
+            </tr>
+          </div>
+        </div>
+      </table>
+
+      <!-- Sorted by region -->
+      <table *ngIf="this.selectedSort === 'region'">
+        <div *ngFor="let region of this.enums">
+          <div>
+            <h1>{{region}}</h1>
+            <hr>
+            <span *ngFor="let dataset of this.usedDatasets">
+              <tr *ngIf="dataset.region === region" (click)="this.selectedDataset = dataset"
+                [ngClass]="{'selected': this.selectedDataset === dataset}">
+                <td>{{dataset.name}}</td>
+              </tr>
+            </span>
+          </div>
+        </div>
+      </table>
+    </div>
+
+  </div>
+</div>

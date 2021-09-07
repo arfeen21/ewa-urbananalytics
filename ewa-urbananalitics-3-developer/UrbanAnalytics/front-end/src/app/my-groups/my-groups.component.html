@@ -1,0 +1,66 @@
+<div class="cont">
+
+  <div class="groupList contentContainer">
+    <h1>Group list</h1>
+    <hr>
+
+    <div class="groupListStyle">
+      <table>
+        <tr *ngFor="let group of this.allGroups let i = index"
+          (click)="this.selectedGroup = group; this.selectedDatasetID = i"
+          [ngClass]="{'selected': this.selectedGroup === group}">
+          <td class="groupImg"><img [src]="group.groupImgUrl"></td>
+          <td class="groupName">{{group.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="groupDetails contentContainer">
+    <h1>Group details</h1>
+    <hr>
+    <div class="groupDetailsContent">
+      <!-- Insert group details here -->
+      <img src="" alt="">
+      <table>
+        <tr>
+          <td>Group name:</td>
+          <td>{{this.selectedGroup?.name}}</td>
+        </tr>
+        <tr>
+          <td>Created on:</td>
+          <td>{{this.selectedGroup?.dateString}}</td>
+        </tr>
+        <tr>
+          <td>Created by:</td>
+          <td>
+            {{this.selectedGroup ? this.selectedGroup.createdBy.firstName : ""}}
+          </td>
+        </tr>
+        <tr>
+          <td>Amount of members:</td>
+          <td>{{this.selectedGroup?.groupMembers.length}}</td>
+        </tr>
+      </table>
+
+      <!-- Give routerLink a route param to give selected value -->
+      <button [disabled]="!this.selectedGroup" routerLink="/groups/single/{{this.selectedGroup?.groupId}}"
+        class="button">Go to
+        group</button>
+
+
+    </div>
+  </div>
+
+  <div class="createGroup contentContainer">
+    <h1>New group</h1>
+    <hr>
+    <div class="createGroupContent">
+      <!-- Insert new group here -->
+      <app-create-group *ngIf="this.createGroupPopup" (exit)="this.toggleGroupPopup()"></app-create-group>
+
+      <button (click)="this.toggleGroupPopup()" class="button">Create new group</button>
+    </div>
+  </div>
+
+</div>

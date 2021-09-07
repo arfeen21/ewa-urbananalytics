@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="sec1">
+    <div>
+      <img src="../../assets/img/urban analytics.png" alt="">
+      <!-- <p class="quote"> Enabling more people’s ownership in energy transition</p> -->
+    </div>
+    <div class="buttons">
+
+      <p class="circle_btn" id="signup" [routerLink]="['/auth/register']" routerLinkActive="router-link-active">Sign
+        up</p>
+
+      <a id="publicDatasetsBtn" href="#publicDatasets" class="circle_btn rm" (click)="this.clicked = true">Browse
+        datasets</a>
+
+    </div>
+    <span></span>
+  </div>
+</div>
+
+<div class="sec2">
+  <div class="test">
+    <div class="gridcontainer">
+      <div class="left">
+        <h2>The problem</h2>
+        <h3>Why did we make this toolkit?</h3>
+        <p> In many cities and regions there are initiatives in which citizens are encouraged to actively participate
+          yet
+          scaling up towards the point where this effort can have a significant impact is the most challenging.
+          <br><br>
+          The limited organizational force of many cooperatives and perceived technological or legal barriers are often
+          hurdles to take the next step.
+          <br><br>
+          Another important factor is that initiatives aimed at (individual) citizens usually attract a certain type of
+          citizen: the relatively affluent, intrinsically motivated, and green oriented citizen. To have a significant
+          impact on the degree of renewable energy we need to engage with not just the frontrunners, but the masses.
+        </p>
+        <span id="block_left"></span>
+      </div>
+      <div class="right">
+        <img src="../../assets/img/planet.png" alt="">
+        <span id="block"></span>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="sec3">
+  <div class="grid-container">
+    <div class="left">
+      <div class="icon_ld">
+        <i class="fa fa-cloud-upload fa-2x"></i>
+      </div>
+      <h3>Upload</h3>
+      <p>
+        You're able to upload .xosv , .csv and excel sheets and our toolkit gives you the freedom to create a
+        visualization of this data.
+      </p>
+    </div>
+    <div class="middle">
+      <div class="icon_ld">
+        <i class="fa fa-check-circle fa-2x"></i>
+      </div>
+      <h3>Select</h3>
+      <p>You're able to choose between multiple styles of charts. This way you can display the data the way you want and
+        is more understandable for everyone. </p>
+    </div>
+    <div class="right">
+      <div class="icon_ld">
+        <i class="fa fa-pencil fa-2x"></i>
+      </div>
+
+      <h3>Edit</h3>
+      <p>If you made a visualization that your not happy with youre always able to edit it. Its possible to edit the
+        type of diagram whenever you want.</p>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div class="sec4">
+  <div class="grid-container">
+    <div class="left">
+
+      <img src="../../assets/img/dude.png" alt="">
+      <span id="block"></span>
+
+    </div>
+    <div class="right">
+      <h2>Our goal</h2>
+      <h3>Change the role of the citizen</h3>
+      <p>The project aims to demonstrate and accelerate the empowerment of citizens to become active energy citizens -
+        and
+        to create local energy communities via existing civil society structures - through development of new
+        solutions
+        (e.g. organisational) and adoption of new, emerging and existing solutions for energy ownership. This will
+        lead to
+        an increase of energy awareness and renewable energy production, and hence reduce the environmental footprint
+        in
+        the North Sea Region.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!--Public datasets which are also visible for unregistered users-->
+<div id="publicDatasets" class="publicDatasets contentContainer" [ngStyle]="{'display': clicked ? 'block' : 'none'}">
+  <i id="publicDatasetsExitBtn" class="fa fa-times-circle exit-icon" aria-hidden="true"
+    [ngStyle]="{'display': clicked ? 'block' : 'none'}" (click)="this.clicked = false;"></i>
+  <h1 id="publicDatasetTitle">All public datasets</h1>
+  <hr>
+  <div *ngFor="let dataset of this.allPublicDatasets">
+    <ng-container *ngIf="dataset.public">
+      <tr>
+        <td>
+          <p>"{{ dataset.name }}" uploaded in: {{dataset.region}}</p>
+          <p id="uploadDate"> Uploaded on: {{dataset.uploadedOn | date:'medium' }}</p>
+        </td>
+      </tr>
+    </ng-container>
+  </div>
+</div>

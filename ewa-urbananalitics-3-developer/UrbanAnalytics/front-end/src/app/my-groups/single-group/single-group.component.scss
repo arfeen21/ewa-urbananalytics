@@ -1,0 +1,212 @@
+@import "../../../styles.scss";
+
+.cont {
+  // Grid settings
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.1fr 0.8fr 1.1fr;
+  grid-template-areas: "groupName groupName""datasetList datasetDetails""datasetList groupMembers";
+  row-gap: 2rem;
+  column-gap: 3rem;
+
+  height: 100%;
+
+  // Group name container
+  .groupName {
+    grid-area: groupName;
+    margin: 2% 3.4% 0 3.4%;
+    text-align: center;
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 50px;
+      height: 75px;
+      width: 75px;
+      top: 15px;
+      border-radius: 100%;
+      object-fit: cover;
+      width: 75px;
+    }
+  }
+
+
+  // Dataset details container
+  .datasetDetails {
+    grid-area: datasetDetails;
+    margin: 0 7% 0 0;
+
+    .datasetDetailsContent {
+      margin: 2rem 0;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      height: 100%;
+
+      .dataSetDetailsContentTable {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 8px;
+      }
+    }
+  }
+
+  // Dataset list container
+  .datasetList {
+    position: relative;
+    grid-area: datasetList;
+    margin: 0 0 5% 7%;
+    font-size: 16px;
+
+    .datasetListContent {
+      height: 95%;
+      overflow-y: scroll;
+
+      // Dataset table
+      .dataSetTable {
+        width: 100%;
+        height: 100%;
+        box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.1);
+
+        .dataset {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          width: 95%;
+          margin: .8rem auto;
+          padding: 1rem;
+          box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15);
+
+          cursor: pointer;
+
+          &:hover {
+            transition: 0.2s;
+            color: $color-primary;
+            background-color: #353a47;
+          }
+
+          &.selected {
+            color: $color-secondary;
+            background-color: #353a47;
+          }
+        }
+      }
+    }
+  }
+
+  // Group members container
+  .groupMembers {
+    grid-area: groupMembers;
+    margin: 0 7% 5% 0;
+    overflow: scroll;
+
+    .gmHeader {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      background: #27292c;
+      border-color: #1f1f20;
+      padding: 4px;
+    }
+
+    li {
+      color: white;
+      background-color: white;
+    }
+
+    tr {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin: 0 0 0.8rem 0;
+      padding: 0.5rem;
+      box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        margin-right: 20px;
+      }
+
+      td {
+        width: 100%;
+        position: relative;
+
+        div {
+          position: absolute;
+          right: 20px;
+          top: 0;
+        }
+
+        i {
+          float: right;
+        }
+      }
+
+    }
+
+
+  }
+
+  .cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(#000000, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+
+    .deleteModal {
+      background: #2c2f38;
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        button {
+          width: 120px;
+        }
+
+        .cancelButton {
+          background-color: #c05e2c
+        }
+      }
+    }
+  }
+
+  @include for-phone-only {
+    grid-template-columns: 100fr;
+    grid-template-rows: 10fr 40fr 30fr 30fr;
+    grid-template-areas: "groupName""datasetList""datasetDetails""groupMembers";
+    height: auto;
+    row-gap: 1.5rem;
+
+    .groupName {
+      margin: 5% 5% 0 5%;
+    }
+
+    .datasetList {
+      margin: 0 5% 0 5%;
+    }
+
+    .datasetDetails {
+      margin: 0 5% 0 5%;
+    }
+
+    .groupMembers {
+      margin: 0 5% 5% 5%;
+    }
+  }
+}

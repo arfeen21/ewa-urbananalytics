@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="tableHeader contentContainer">
+    <h1>Check and select data</h1>
+  </div>
+
+  <div class="uploadStep">
+    <h1>1 - 2 - 3 - 4</h1>
+  </div>
+
+  <div class="tableContainer contentContainer">
+    <div class="tableContent">
+      <table>
+        <tr *ngFor="let row of data">
+          <td><input type="checkbox"></td>
+          <td *ngFor="let val of row">
+            {{val}}
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="buttonRow">
+      <button class="button">Back</button>
+      <button class="button" routerLink="/datasets/create/graphs">
+        Next
+      </button>
+    </div>
+  </div>
+
+</div>

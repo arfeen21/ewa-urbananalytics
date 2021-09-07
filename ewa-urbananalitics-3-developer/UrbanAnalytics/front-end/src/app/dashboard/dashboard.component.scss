@@ -1,0 +1,65 @@
+@import "../../styles.scss";
+
+.cont {
+  // Grid settings
+  display: grid;
+  grid-template-columns: 50fr 50fr;
+  grid-template-rows: 50fr 50fr;
+  grid-template-areas: "recentPrivate recentPublic""recentPrivate alerts";
+  row-gap: 3rem;
+  column-gap: 3rem;
+
+  height: 100%;
+
+  // Recent public container
+  .recentPublic {
+    grid-area: recentPublic;
+    margin: 5% 7% 0 0;
+    overflow: scroll;
+  }
+
+  tr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.8rem 0 0.8rem 0;
+    padding: 1rem;
+    box-shadow: 0 0 8px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-align: center;
+  }
+
+  //Alerts container
+  .alerts {
+    grid-area: alerts;
+    margin: 0 7% 5% 0;
+    overflow: scroll;
+  }
+
+  //Recent private container
+  .recentPrivate {
+    grid-area: recentPrivate;
+    margin: 5% 0 5% 7%;
+    overflow-y: scroll;
+  }
+
+  //Change grid if device is a phone
+  @include for-phone-only {
+    grid-template-columns: 100fr;
+    grid-template-rows: 50fr 50fr 50fr;
+    grid-template-areas: "recentPrivate""recentPublic""alerts";
+
+    .recentPublic {
+      margin: 0 7% 0 7%;
+    }
+
+    .alerts {
+      margin: 0 7% 0 7%;
+    }
+
+    .recentPrivate {
+      margin: 7% 7% 0 7%;
+    }
+  }
+
+}
